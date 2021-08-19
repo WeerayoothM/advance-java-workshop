@@ -3,6 +3,8 @@ package unittest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.Executors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HelloTest {
@@ -19,6 +21,21 @@ class HelloTest {
         };
         String name = hello.workWithDb(1);
         assertEquals("Weerayooth",name);
+    }
+
+    @Test
+    @DisplayName("เกิด exception เมื่อค้นหาผู้ใช้งาน id = 2 ไม่เจอ")
+    public void case03(){
+        Hello hello = new Hello();
+        hello.userDB = new UserDB(){
+            @Override
+            public String getNameById(int id ){
+                throw new UserNotFoundException("Id=" + id + " not found");
+            }
+        };
+        Exception exception = assertThrows(UserNotFoundException.class, () ->
+            hello.workWithDb(2));
+        assertEquals("Id=2 not found",exception.getMessage());
     }
 
     @Test

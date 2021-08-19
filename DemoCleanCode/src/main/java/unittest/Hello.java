@@ -11,6 +11,8 @@ public class Hello {
     public String workWithDb(int id) {
         // Tight coupling with UserDb class => Loose coupling
         // UserDB userDB = new UserDB(); <- Tight coupling
+
+
         return userDB.getNameById(id);
     }
 }
