@@ -17,14 +17,6 @@ public class Hello {
     }
 }
 
-class UserDB {  // connect to db
-    public String getNameById(int id ){
-        // Unstable with dependency
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        throw new RuntimeException("DB fail");
-    }
+interface UserDB {  // connect to db
+    public String getNameById(int id ) throws UserNotFoundException;
 }
