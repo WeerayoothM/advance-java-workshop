@@ -7,18 +7,20 @@ import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class UserDBWithSuccess extends UserDB {
+    @Override
+    public String getNameById(int id ){
+        return "Weerayooth";
+    }
+}
+
 class HelloTest {
 
     @Test
     @DisplayName("ทำการทดสอบกับ Database (I = Isolate/Independent)")
     public void case02(){
         Hello hello = new Hello();
-        hello.userDB = new UserDB(){
-            @Override
-            public String getNameById(int id ){
-                return "Weerayooth";
-            }
-        };
+        hello.userDB = new UserDBWithSuccess();
         String name = hello.workWithDb(1);
         assertEquals("Weerayooth",name);
     }

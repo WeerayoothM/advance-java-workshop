@@ -17,7 +17,7 @@ public class Hello {
     }
 }
 
-class UserDB {
+class UserDB {  // connect to db
     public String getNameById(int id ){
         // Unstable with dependency
         try {
