@@ -22,6 +22,7 @@ class HelloTest {
         Hello hello = new Hello();
         hello.userDB = new UserDBWithSuccess();
         String name = hello.workWithDb(1);
+
         assertEquals("Weerayooth",name);
     }
 
