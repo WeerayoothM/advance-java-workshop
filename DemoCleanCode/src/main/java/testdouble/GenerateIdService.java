@@ -10,7 +10,7 @@ public class GenerateIdService {
         this.random = random;
     }
 
-    public String get(){
+    public String get(Object name) {
         int number = random.nextInt(10);
         String id = "XYZ" + number;
         return id;
